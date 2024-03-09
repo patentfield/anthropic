@@ -6,8 +6,18 @@ require_relative "anthropic/client"
 require_relative "anthropic/version"
 
 module Anthropic
-  class Error < StandardError; end
-  class ConfigurationError < Error; end
+  # class Error < StandardError; end
+  # class ConfigurationError < Error; end
+  class ConfigurationError < StandardError; end
+
+  class Error < StandardError
+    attr_reader :response
+
+    def initialize(message = nil, response = nil)
+      super(message)
+      @response = response
+    end
+  end
 
   class Configuration
     attr_writer :access_token
