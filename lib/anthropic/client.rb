@@ -32,7 +32,7 @@ module Anthropic
 
           # handle max attempts
           if attempts > max_attempts
-            raise Anthropic::Error.new("Failed after #{max_attempts} attempts. #{error_message}", response)
+            raise Anthropic::Error.new("Failed after #{max_attempts} attempts.", response)
           end
 
           # handle error response
