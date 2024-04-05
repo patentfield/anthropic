@@ -28,7 +28,7 @@ module Anthropic
         attempts += 1
         Anthropic::Client.json_post(path: "/messages", parameters: parameters).tap do |response|
           # handle successful response
-          return response if response.dig("content", 0, "text")
+          return response if response.dig("content", 0)
 
           # handle max attempts
           if attempts > max_attempts
